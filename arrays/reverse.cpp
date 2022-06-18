@@ -1,11 +1,8 @@
 #include <iostream>
-using namespace std;
 
-void swap(int* a, int* b) {
-    int c = *a;
-    *a = *b;
-    *b = c;
-}
+#include "helpers.h"
+
+using namespace std;
 
 void reverse_arr(int* arr, int len) {
     int low = 0, high = len - 1;
@@ -14,13 +11,6 @@ void reverse_arr(int* arr, int len) {
         low++;
         high--;
     }
-}
-
-void print(int* arr, int len) {
-    for (int i = 0; i < len; i++) {
-        cout << arr[i] << "  ";
-    }
-    cout << endl;
 }
 
 int main() {

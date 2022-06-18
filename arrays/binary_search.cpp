@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "helpers.h"
 using namespace std;
 
 int bin_search(int key, int* arr, int len) {

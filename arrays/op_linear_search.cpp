@@ -1,11 +1,7 @@
 #include <iostream>
-using namespace std;
 
-void swap(int* num1, int* num2) {
-    int a = *num1;
-    *num1 = *num2;
-    *num2 = a;
-}
+#include "helpers.h"
+using namespace std;
 
 int l1(int key, int* arr, int len) {
     for (int i = 0; i < len; i++) {

@@ -1,11 +1,7 @@
 #include <iostream>
-using namespace std;
 
-void swap(int* a, int* b) {
-    int c = *a;
-    *a = *b;
-    *b = c;
-}
+#include "helpers.h"
+using namespace std;
 
 void left_shift_arr(int* arr, int len) {
     for (int i = 1; i < len; i++) {
@@ -31,13 +27,6 @@ void right_rotate(int* arr, int len) {
     for (int i = len - 2; i >= 0; i--) {
         swap(arr[i + 1], arr[i]);
     }
-}
-
-void print(int* arr, int len) {
-    for (int i = 0; i < len; i++) {
-        cout << arr[i] << "  ";
-    }
-    cout << endl;
 }
 
 int main() {
