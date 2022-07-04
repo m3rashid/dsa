@@ -16,4 +16,25 @@ void swap(int* num1, int* num2) {
     *num2 = a;
 }
 
+struct IminMax {
+    int max;
+    int min;
+};
+
+IminMax minMax(int* arr, int len) {
+    IminMax val;
+    val.max = arr[0];
+    val.min = arr[0];
+
+    for (int i = 1; i < len; i++) {
+        if (arr[i] > val.max) {
+            val.max = arr[i];
+        }
+        if (arr[i] < val.min) {
+            val.min = arr[i];
+        }
+    }
+    return val;
+}
+
 #endif
