@@ -3,6 +3,8 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "files.associations": {
-    "cmath": "cpp"
+    "*.tmpl": "html",
+    "cmath": "cpp",
+    "*.tcc": "cpp"
   }
 }
