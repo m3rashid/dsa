@@ -7,6 +7,10 @@ struct Node {
   NOde* right;
 }
 
+void insert(int data) {
+    
+}
+
 int main () {
-  
+    
 }  
