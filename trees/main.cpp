@@ -40,7 +40,6 @@ class BinaryTree {
         vector<int> forRight;
 
         // arrayToBinaryTree(copy(arr.begin(), arr.begin(), forLeft.begin()), n, root->leftNode);
-
         // arrayToBinaryTree(copy(arr.begin(), arr.begin(), forLeft.begin()), n, root->rightNode);
     }
 };
