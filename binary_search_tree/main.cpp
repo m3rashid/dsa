@@ -110,6 +110,13 @@ Node* deleteNode(int key, Node* p) {
     return p;
 }
 
+void printTree(Node* root) {
+    if (!root) return;
+    cout << root->data << " ";
+    printTree(root->left);
+    printTree(root->right);
+}
+
 int main() {
     Node* root = new Node{data : 5, left : NULL, right : NULL};
 
@@ -119,7 +126,10 @@ int main() {
         insert(arr[i], root);
     }
 
-    int arr2[] = {33, 23, 4};
+    printTree(root);
+    cout << endl;
+
+    int arr2[] = {33, 21, 4};
     for (int i = 0; i < sizeof(arr2) / sizeof(arr2[0]); i++) {
         Node* found = search(arr2[i], root);
         if (found) {
