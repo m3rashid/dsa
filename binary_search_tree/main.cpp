@@ -30,12 +30,14 @@ Node* insert(int key, Node* p) {
         t = new Node;
         t->data = key;
         t->left = t->right = NULL;
+        cout << "Inserted " << key << endl;
         return t;
     }
-    if (key < p->data)
+    if (key < p->data) {
         p->left = insert(key, p->left);
-    else
+    } else {
         p->right = insert(key, p->right);
+    }
     return t;
 }
 
@@ -86,7 +88,6 @@ Node* deleteNode(int key, Node* p) {
     Node* q;
     if (!p) return NULL;
     if (!p->left && !p->right) {
-        if (p == root) root = NULL;
         free(p);
         return NULL;
     }
@@ -107,4 +108,24 @@ Node* deleteNode(int key, Node* p) {
         }
     }
     return p;
+}
+
+int main() {
+    Node* root = new Node{data : 5, left : NULL, right : NULL};
+
+    int arr[] = {1, 3, 4, 65, 23, 2, 21};
+
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) {
+        insert(arr[i], root);
+    }
+
+    int arr2[] = {33, 23, 4};
+    for (int i = 0; i < sizeof(arr2) / sizeof(arr2[0]); i++) {
+        Node* found = search(arr2[i], root);
+        if (found) {
+            cout << "Found: " << found->data << endl;
+        } else {
+            cout << arr2[i] << " not found" << endl;
+        }
+    }
 }
