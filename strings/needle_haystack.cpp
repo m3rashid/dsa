@@ -69,11 +69,61 @@ vector<int> positions_kmp(string haystack, string needle) {
   return p;
 }
 
+int rabin_karp_hash(string s, int start, int end) {
+  int n = end - start;
+
+  int hash = 0;
+  for (int i = 0; i < n; i++) {
+    hash += s[start + i];  // just sum the values
+  }
+
+  return hash;
+}
+
+int rolling_hash_next(string s, int hash, int prev_start, int prev_end) {
+  return hash - s[prev_start] + s[prev_end];
+}
+
+vector<int> positions_rabin_karp(string haystack, string needle) {
+  // define a hash function
+
+  // calculate the hash of the needle using that hash function
+  int needle_size = needle.size();
+  int hash_needle = rabin_karp_hash(needle, 0, needle_size);
+
+  // now sliding-window over the haystack (window size = len(needle))
+  // calculate hash, if hash matches -> compare the actual strings else move ahead
+  int n = haystack.size();
+  int range = n - needle_size;
+  int hash = rabin_karp_hash(haystack, 0, needle_size);
+
+  vector<int> res;
+  for (int i = 0; i < range; i++) {
+    if (hash == hash_needle) {
+      // actually check the elements
+
+      bool matched = true;
+      for (int j = 0; j < needle_size; j++) {
+        if (needle[j] != haystack[i + j]) {
+          matched = false;
+          break;
+        }
+      }
+
+      if (matched) res.push_back(i);
+    }
+
+    hash = rolling_hash_next(haystack, hash, i, i + needle_size);
+  }
+
+  return res;
+}
+
 int main() {
-  string haystack = "aaaaaaac";
+  string haystack = "acaccacc";
   string needle = "aa";
 
-  vector<int> poss = positions_kmp(haystack, needle);
+  vector<int> poss = positions_rabin_karp(haystack, needle);
   int n = poss.size();
 
   cout << "[ ";
