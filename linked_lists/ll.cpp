@@ -2,89 +2,89 @@
 using namespace std;
 
 class ListNode {
-   private:
-    int data;
-    ListNode* next;
+ private:
+  int data;
+  ListNode* next;
 
-   public:
-    ListNode(int d = 0) {
-        this->data = d;
-        this->next = NULL;
-    }
+ public:
+  ListNode(int d = 0) {
+    this->data = d;
+    this->next = NULL;
+  }
 
-    ListNode* getNode() {
-        return this;
-    }
+  ListNode* getNode() {
+    return this;
+  }
 
-    int getData() {
-        return this->data;
-    }
+  int getData() {
+    return this->data;
+  }
 
-    ListNode* getThisNext() {
-        return this->next;
-    }
+  ListNode* getThisNext() {
+    return this->next;
+  }
 
-    void setThisNext(ListNode* n) {
-        this->next = n;
-    }
+  void setThisNext(ListNode* n) {
+    this->next = n;
+  }
 };
 
 class LinkedList {
-   private:
-    ListNode* head;
-    ListNode* previous;
+ private:
+  ListNode* head;
+  ListNode* previous;
 
-   public:
-    LinkedList() {
-        this->head = NULL;
-        this->previous = NULL;
-    };
+ public:
+  LinkedList() {
+    this->head = NULL;
+    this->previous = NULL;
+  };
 
-    void addNodeAtTheEnd(int n = 0) {
-        ListNode* node = new ListNode(n);
+  void addNodeAtTheEnd(int n = 0) {
+    ListNode* node = new ListNode(n);
 
-        if (!(this->head)) {
-            this->head = node;
-        } else {
-            this->previous->setThisNext(node);
-        }
-
-        this->previous = node;
+    if (!(this->head)) {
+      this->head = node;
+    } else {
+      this->previous->setThisNext(node);
     }
 
-    ListNode* getHead() {
-        return this->head;
-    }
+    this->previous = node;
+  }
 
-    ListNode* getLast() {
-        return this->previous;
-    }
+  ListNode* getHead() {
+    return this->head;
+  }
 
-    void printList() {
-        ListNode* head = this->getHead();
-        while (head) {
-            cout << head->getData() << "  ";
-            head = head->getThisNext();
-        }
-        cout << endl;
-    }
+  ListNode* getLast() {
+    return this->previous;
+  }
 
-    void reverse() {
-        ListNode* justBack = NULL;
-        ListNode* justBackBack = NULL;
-
-        while (this->head) {
-            justBackBack = justBack;
-            justBack = this->head;
-            this->head = this->head->getThisNext();
-            justBack->setThisNext(justBackBack);
-        }
-        this->head = justBack;
+  void printList() {
+    ListNode* head = this->getHead();
+    while (head) {
+      cout << head->getData() << "  ";
+      head = head->getThisNext();
     }
+    cout << endl;
+  }
 
-    void arrToLinkedList(int arr[], int n) {
-        for (int i = 0; i < n; i++) this->addNodeAtTheEnd(arr[i]);
+  void reverse() {
+    ListNode* justBack = NULL;
+    ListNode* justBackBack = NULL;
+
+    while (this->head) {
+      justBackBack = justBack;
+      justBack = this->head;
+      this->head = this->head->getThisNext();
+      justBack->setThisNext(justBackBack);
     }
+    this->head = justBack;
+  }
+
+  void arrToLinkedList(int arr[], int n) {
+    for (int i = 0; i < n; i++) this->addNodeAtTheEnd(arr[i]);
+  }
 };
 
 // int main() {
