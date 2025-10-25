@@ -1,5 +1,5 @@
 #ifndef BASIC_H
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "./ll.cpp"
 #endif
@@ -16,7 +16,7 @@ int main() {
   ListNode* last = ll.getLast();
   last->setThisNext(ll.getHead());
 
-  ll.printList();
+  ll.print();
 
   return 0;
 }

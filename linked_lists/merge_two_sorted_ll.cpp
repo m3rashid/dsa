@@ -1,5 +1,5 @@
 #ifndef INCLUDES_H
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "./ll.cpp"
 #endif
@@ -45,7 +45,7 @@ int main() {
   ll2.arrToLinkedList(arr2, n2);
 
   LinkedList ll = mergeLists(ll1.getHead(), ll2.getHead());
-  ll.printList();
+  ll.print();
 
   return 0;
 }

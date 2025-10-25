@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 class ListNode {
@@ -60,7 +61,7 @@ class LinkedList {
     return this->previous;
   }
 
-  void printList() {
+  void print() {
     ListNode* head = this->getHead();
     while (head) {
       cout << head->getData() << "  ";
@@ -82,21 +83,46 @@ class LinkedList {
     this->head = justBack;
   }
 
+  /* removes all occurance of the given element */
+  void remove(int n) {
+    ListNode* ptr = this->getHead();
+    ListNode* follow = NULL;
+
+    while (ptr) {
+      if (ptr->getData() == n) {
+        ListNode* element = ptr;  // element to be deleted
+
+        if (!follow) {  // case 1: it is the first element
+          cout << "deleting the first elemnt" << endl;
+          ptr = ptr->getThisNext();
+          this->head = ptr;  // update global head
+        } else {
+          follow->setThisNext(ptr->getThisNext());
+          ptr = ptr->getThisNext();
+        }
+
+        element->setThisNext(NULL);
+        delete element;
+      } else {
+        follow = ptr;
+        ptr = ptr->getThisNext();
+      }
+    }
+  }
+
   void arrToLinkedList(int arr[], int n) {
     for (int i = 0; i < n; i++) this->addNodeAtTheEnd(arr[i]);
   }
 };
 
-// int main() {
-//     int arr[] = {5, 52, 33, 44, 15, 52, 312, 3123, 12};
-//     int n = sizeof(arr) / sizeof(arr[0]);
+int main() {
+  vector<int> v = {1, 2, 3, 4, 5, 5, 7, 8};
 
-//     LinkedList ll = LinkedList();
-//     ll.arrToLinkedList(arr, n);
-//     ll.printList();
+  LinkedList ll = LinkedList();
+  for (const int& x : v) ll.addNodeAtTheEnd(x);
 
-//     ll.reverse();
-//     ll.printList();
-
-//     return 0;
-// }
+  ll.remove(1);
+  ll.remove(5);
+  ll.remove(4);
+  ll.print();
+}
